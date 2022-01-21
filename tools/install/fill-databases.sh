@@ -71,7 +71,7 @@ ShowAndExecute 'mysql pci -e' "SELECT count(*) FROM config2;"
 
 date
 echo -e "${yellow}getting newesd IMDB csv files from imdb.com${default}"
-ShowAndExecute "python3 imdbUpdate.py"
+ShowAndExecute "python3 imdbGet.py"
 
 date
 echo -e "${yellow}importing IMDB Tables from csv files${default}"

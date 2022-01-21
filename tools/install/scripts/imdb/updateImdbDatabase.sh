@@ -20,7 +20,7 @@ echo
 
 
 
-python3 imdbUpdate.py
+python3 imdbGet.py
 echo ------------------ importing IMDB DATAFILES TO DB -------------------------
 time python3 $BASEPATH/install/IMDBimport.py --import
 echo ------------------- creating memory copy of IMDB --------------------------

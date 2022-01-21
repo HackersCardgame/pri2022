@@ -74,7 +74,7 @@ then
 
 	date
 	echo getting newesd imdb files from imdb.com
-	time python3 imdbUpdate.py
+	time python3 imdbGet.py
 
   date
 	date
@@ -111,7 +111,7 @@ then
 
 		date
 		echo getting newesd imdb files from imdb.com
-		time python3 imdbUpdate.py
+		time python3 imdbGet.py
 
 		date
 		echo skipping imdbImport
