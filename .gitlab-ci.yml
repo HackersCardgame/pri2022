@@ -1,0 +1,159 @@
+stages:
+  - build
+  - test
+  
+ubuntu-build:
+  stage: build
+  tags:
+    - ubuntu
+  variables:
+    OS_TARGET: "/ubuntu"
+  script:
+    - export WORKING_DIR=$(pwd)
+    - echo $WORKING_DIR
+    - bash prerequisites.sh
+    - make
+  only:
+    - master
+  allow_failure: true
+  artifacts:
+    paths:
+    - bin
+    - tools
+    - src
+    expire_in: 1 day
+
+ubuntu-test:
+  stage: test
+  tags:
+    - ubuntu
+  variables:
+    OS_TARGET: "/ubuntu"
+  script:
+    - export WORKING_DIR=$(pwd)
+    - sed -i -e 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirror.init7.net\/ubuntu\//g' /etc/apt/sources.list
+    - bash prerequisites.sh
+    - bash ./tools/install/setup.sh
+    - echo $WORKING_DIR
+    - cd $WORKING_DIR
+    - ls ./bin${OS_TARGET}/
+    - ls ./bin${OS_TARGET}/unittests
+    - bash unittests.sh
+  only:
+    - master
+
+stretch-build:
+  stage: build
+  tags:
+    - stretch
+  variables:
+    OS_TARGET: "/stretch"
+  script:
+    - export WORKING_DIR=$(pwd)
+    - bash prerequisites.sh
+    - make CXX=clang++-6.0
+  only:
+    - master
+  allow_failure: true
+  artifacts:
+    paths:
+    - bin
+    - tools
+    - src
+    expire_in: 1 day
+
+stretch-test:
+  stage: test
+  tags:
+    - stretch
+  variables:
+    OS_TARGET: "/stretch"
+  script:
+    - export WORKING_DIR=$(pwd)
+    - bash prerequisites.sh
+    - bash ./tools/install/setup.sh
+    - echo $WORKING_DIR
+    - cd $WORKING_DIR
+    - ls ./bin${OS_TARGET}/
+    - ls ./bin${OS_TARGET}/unittests
+    - bash unittests.sh
+  only:
+    - master
+    
+buster-build:
+  stage: build
+  tags:
+    - buster
+  variables:
+    OS_TARGET: "/buster"
+  script:
+    - ls
+    - pwd
+    - bash prerequisites.sh
+    - make
+  only:
+    - master
+  allow_failure: true
+  artifacts:
+    paths:
+    - bin
+    - tools
+    - src
+    expire_in: 1 day
+
+buster-test:
+  stage: test
+  tags:
+    - buster
+  variables:
+    OS_TARGET: "/buster"
+  script:
+    - export WORKING_DIR=$(pwd)
+    - bash prerequisites.sh
+    - bash ./tools/install/setup.sh
+    - echo $WORKING_DIR
+    - cd $WORKING_DIR
+    - ls ./bin${OS_TARGET}/
+    - ls ./bin${OS_TARGET}/unittests
+    - bash unittests.sh
+  only:
+    - master
+
+centos-build:
+  stage: build
+  tags:
+    - centos
+  variables:
+    OS_TARGET: "/centos"
+  script:
+    - bash prerequisites.sh
+    - bash build-centos.sh    
+  only:
+    - master
+  allow_failure: true
+  artifacts:
+    paths:
+    - bin
+    - tools
+    - src
+    expire_in: 1 day
+    
+centos-test:
+  stage: test
+  tags:
+    - centos
+  variables:
+    OS_TARGET: "/centos"
+  script:
+    - export WORKING_DIR=$(pwd)
+    - bash prerequisites.sh
+    - bash ./tools/install/setup.sh
+    - echo $WORKING_DIR
+    - cd $WORKING_DIR
+    - ls ./bin${OS_TARGET}/
+    - ls ./bin${OS_TARGET}/unittests
+    - bash unittests.sh
+  only:
+    - master
+
+
