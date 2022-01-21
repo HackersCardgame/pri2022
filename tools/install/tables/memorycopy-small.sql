@@ -2,7 +2,7 @@ USE pci;
 
 CREATE TABLE IF NOT EXISTS basics_small like title_basics_tsv;
 ALTER TABLE basics_small ENGINE=MEMORY;
-REPLACE INTO basics_small SELECT * FROM title_basics_tsv where (titleType = 'movie' or titleType = 'video') AND startYear >= "2015";
+REPLACE INTO basics_small SELECT * FROM title_basics_tsv where (titleType = 'movie' or titleType = 'video') AND startYear >= "2019";
 create index IF NOT EXISTS bs_pt on basics_small(primaryTitle);
 create index IF NOT EXISTS bs_ot on basics_small(originalTitle);
 
