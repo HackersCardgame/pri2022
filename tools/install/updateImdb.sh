@@ -72,9 +72,22 @@ pwd
 if test -f "/etc/apt/sources.list"
 then
 
-	./updateImdb.sh
+	date
+	echo getting newesd imdb files from imdb.com
+	time python3 imdbGet.py
 
-	./updateMojo.sh
+  date
+	date
+	echo skipping imdbImport
+	time python3 imdbImport.py --import
+
+  date
+	echo creating memorycopy
+	time python3 imdbImport.py --memorycopy
+
+  date
+	echo creating memorycopy-small
+	time python3 imdbImport.py --memorycopy-small
 
 fi
 

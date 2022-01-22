@@ -72,9 +72,18 @@ pwd
 if test -f "/etc/apt/sources.list"
 then
 
-	./updateImdb.sh
 
-	./updateMojo.sh
+  date
+  echo importing one single mojo to check functionality
+  python3 mojoUpdate.py
+
+  ls weeklyMojoDumps
+
+  date
+  echo importing one single mojo to check functionality
+  python3 mojoImport.py
+
+  ShowAndExecute 'mysql pci -e' "SELECT * from mojo;"
 
 fi
 
