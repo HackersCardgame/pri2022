@@ -9,6 +9,7 @@ Restart=always
 RestartSec=1
 User=pri
 WorkingDirectory=/opt/pri/bin
+#ExecStartPre=mysql -f pci <  /opt/pri/bin/memorycopy-small.sql
 ExecStart=/opt/pri/bin/phaseServer
 
 [Install]

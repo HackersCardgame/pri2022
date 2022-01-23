@@ -56,6 +56,8 @@ server: src/server/udpServerMain.cpp
 	cp src/server/cert.pem $(BIN)
 	cp src/server/key.pem $(BIN)
 	cp src/server/startServer.sh $(BIN)
+	cp tools/install/tables/memorycopy-small.sql $(BIN)
+
 	cp src/server/phase-server.service $(BIN)/
 	@echo -e "Compiled "$(red)$<$(green)" successfully!"$(default)
 	@echo "..."
