@@ -17,3 +17,8 @@ you need the modified cb-ftp: https://github.com/HackersCardgame/cbftp-r983, nee
 
 initial User ist user02 with password 123456, password is hashed in the database, you can have a look at ./pri2022/src/server/hashPassword_unittest.cpp to see how you need to create the right hash
 
+in the /bin directory run
+./phaseClient user02 123456
+
+but first you need to start the server also in the bin directory or you can install the server as systemD startup thingie with makefile command
+./pri2022/bin/startServer.sh 
