@@ -20,5 +20,8 @@ initial User ist user02 with password 123456, password is hashed in the database
 in the /bin directory run
 ./phaseClient user02 123456
 
-but first you need to start the server also in the bin directory or you can install the server as systemD startup thingie with makefile command
+but first you need to start the server also in the bin directory or you can install the server as systemD startup thingie with make command [1]
 ./pri2022/bin/startServer.sh 
+
+
+[1] https://github.com/HackersCardgame/pri2022/blob/main/Makefile#L204-L219
