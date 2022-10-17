@@ -13,5 +13,7 @@ As root
 8. make install-server installs the server to the system (needs 6+ Core!) as a service you can run with systemctl
 9. to get the first user with password see server/hashPassword_unittest.cpp and use mysql command to create one (puzzle)
 
-you need the modified cb-ftp: https://github.com/HackersCardgame/cbftp-r983, needs also to be compilet, has also a prerequisistes.sh
+you need the modified cb-ftp: https://github.com/HackersCardgame/cbftp-r983, needs also to be compilet, has also a prerequisistes.sh, the repo is somehow broken, so maybe you need to use the https://github.com/HackersCardgame/cbftp and apply the patch from r983 if the patch still works or then you need to modify manually (C/C++)
+
+initial User ist user02 with password 123456, password is hashed in the database, you can have a look at ./pri2022/src/server/hashPassword_unittest.cpp to see how you need to create the right hash
 
